@@ -1,0 +1,836 @@
+{
+  "devices": {
+    "f1atb_router": {
+      "external_id": "ext:test-integration:router:a4cf12345678",
+      "should_poll": false,
+      "params": ["ROUTER_MODEL", "ROUTER_ID"],
+      "features": [
+        {
+          "external_id": "ext:test-integration:router:a4cf12345678:grid_import_power",
+          "category": "grid-sensor",
+          "type": "input-power",
+          "unit": "watt",
+          "min": 0,
+          "max": 100000,
+          "read_only": true,
+          "has_feedback": false
+        },
+        {
+          "external_id": "ext:test-integration:router:a4cf12345678:grid_export_power",
+          "category": "grid-sensor",
+          "type": "output-power",
+          "unit": "watt",
+          "min": 0,
+          "max": 100000,
+          "read_only": true,
+          "has_feedback": false
+        },
+        {
+          "external_id": "ext:test-integration:router:a4cf12345678:grid_import_index",
+          "category": "grid-sensor",
+          "type": "input-index",
+          "unit": "kilowatt-hour",
+          "min": 0,
+          "max": 1000000000,
+          "read_only": true,
+          "has_feedback": false
+        },
+        {
+          "external_id": "ext:test-integration:router:a4cf12345678:grid_export_index",
+          "category": "grid-sensor",
+          "type": "output-index",
+          "unit": "kilowatt-hour",
+          "min": 0,
+          "max": 1000000000,
+          "read_only": true,
+          "has_feedback": false
+        },
+        {
+          "external_id": "ext:test-integration:router:a4cf12345678:routed_power",
+          "category": "energy-sensor",
+          "type": "power",
+          "unit": "watt",
+          "min": 0,
+          "max": 100000,
+          "read_only": true,
+          "has_feedback": false
+        },
+        {
+          "external_id": "ext:test-integration:router:a4cf12345678:routed_energy",
+          "category": "energy-sensor",
+          "type": "index",
+          "unit": "kilowatt-hour",
+          "min": 0,
+          "max": 1000000000,
+          "read_only": true,
+          "has_feedback": false
+        },
+        {
+          "external_id": "ext:test-integration:router:a4cf12345678:temperature_1",
+          "category": "temperature-sensor",
+          "type": "decimal",
+          "unit": "celsius",
+          "min": -50,
+          "max": 150,
+          "read_only": true,
+          "has_feedback": false
+        },
+        {
+          "external_id": "ext:test-integration:router:a4cf12345678:temperature_2",
+          "category": "temperature-sensor",
+          "type": "decimal",
+          "unit": "celsius",
+          "min": -50,
+          "max": 150,
+          "read_only": true,
+          "has_feedback": false
+        },
+        {
+          "external_id": "ext:test-integration:router:a4cf12345678:temperature_3",
+          "category": "temperature-sensor",
+          "type": "decimal",
+          "unit": "celsius",
+          "min": -50,
+          "max": 150,
+          "read_only": true,
+          "has_feedback": false
+        },
+        {
+          "external_id": "ext:test-integration:router:a4cf12345678:temperature_4",
+          "category": "temperature-sensor",
+          "type": "decimal",
+          "unit": "celsius",
+          "min": -50,
+          "max": 150,
+          "read_only": true,
+          "has_feedback": false
+        },
+        {
+          "external_id": "ext:test-integration:router:a4cf12345678:rssi",
+          "category": "signal",
+          "type": "integer",
+          "unit": null,
+          "min": -120,
+          "max": 0,
+          "read_only": true,
+          "has_feedback": false
+        }
+      ]
+    },
+    "f1atb_triac": {
+      "external_id": "ext:test-integration:output:a4cf12345678-a0",
+      "should_poll": false,
+      "params": ["ROUTER_MODEL", "ROUTER_ID", "ROUTER_OUTPUT"],
+      "features": [
+        {
+          "external_id": "ext:test-integration:output:a4cf12345678-a0:opening",
+          "category": "switch",
+          "type": "dimmer",
+          "unit": null,
+          "min": 0,
+          "max": 100,
+          "read_only": true,
+          "has_feedback": false
+        },
+        {
+          "external_id": "ext:test-integration:output:a4cf12345678-a0:forced",
+          "category": "switch",
+          "type": "binary",
+          "unit": null,
+          "min": 0,
+          "max": 1,
+          "read_only": false,
+          "has_feedback": true
+        },
+        {
+          "external_id": "ext:test-integration:output:a4cf12345678-a0:mode",
+          "category": "text",
+          "type": "text",
+          "unit": null,
+          "min": 0,
+          "max": 0,
+          "read_only": true,
+          "has_feedback": false
+        },
+        {
+          "external_id": "ext:test-integration:output:a4cf12345678-a0:force_remaining",
+          "category": "duration",
+          "type": "integer",
+          "unit": "minutes",
+          "min": 0,
+          "max": 1440,
+          "read_only": true,
+          "has_feedback": false
+        },
+        {
+          "external_id": "ext:test-integration:output:a4cf12345678-a0:on_hours",
+          "category": "duration",
+          "type": "decimal",
+          "unit": "hours",
+          "min": 0,
+          "max": 24,
+          "read_only": true,
+          "has_feedback": false
+        }
+      ]
+    },
+    "f1atb_relay": {
+      "external_id": "ext:test-integration:output:a4cf12345678-a1",
+      "should_poll": false,
+      "params": ["ROUTER_MODEL", "ROUTER_ID", "ROUTER_OUTPUT"],
+      "features": [
+        {
+          "external_id": "ext:test-integration:output:a4cf12345678-a1:opening",
+          "category": "switch",
+          "type": "dimmer",
+          "unit": null,
+          "min": 0,
+          "max": 100,
+          "read_only": true,
+          "has_feedback": false
+        },
+        {
+          "external_id": "ext:test-integration:output:a4cf12345678-a1:forced",
+          "category": "switch",
+          "type": "binary",
+          "unit": null,
+          "min": 0,
+          "max": 1,
+          "read_only": false,
+          "has_feedback": true
+        },
+        {
+          "external_id": "ext:test-integration:output:a4cf12345678-a1:mode",
+          "category": "text",
+          "type": "text",
+          "unit": null,
+          "min": 0,
+          "max": 0,
+          "read_only": true,
+          "has_feedback": false
+        },
+        {
+          "external_id": "ext:test-integration:output:a4cf12345678-a1:force_remaining",
+          "category": "duration",
+          "type": "integer",
+          "unit": "minutes",
+          "min": 0,
+          "max": 1440,
+          "read_only": true,
+          "has_feedback": false
+        },
+        {
+          "external_id": "ext:test-integration:output:a4cf12345678-a1:on_hours",
+          "category": "duration",
+          "type": "decimal",
+          "unit": "hours",
+          "min": 0,
+          "max": 24,
+          "read_only": true,
+          "has_feedback": false
+        }
+      ]
+    },
+    "msunpv_router": {
+      "external_id": "ext:test-integration:router:0000200",
+      "should_poll": false,
+      "params": ["ROUTER_MODEL", "ROUTER_ID"],
+      "features": [
+        {
+          "external_id": "ext:test-integration:router:0000200:grid_power",
+          "category": "grid-sensor",
+          "type": "power",
+          "unit": "watt",
+          "min": -100000,
+          "max": 100000,
+          "read_only": true,
+          "has_feedback": false
+        },
+        {
+          "external_id": "ext:test-integration:router:0000200:grid_import_index",
+          "category": "grid-sensor",
+          "type": "input-index",
+          "unit": "kilowatt-hour",
+          "min": 0,
+          "max": 1000000000,
+          "read_only": true,
+          "has_feedback": false
+        },
+        {
+          "external_id": "ext:test-integration:router:0000200:grid_export_index",
+          "category": "grid-sensor",
+          "type": "output-index",
+          "unit": "kilowatt-hour",
+          "min": 0,
+          "max": 1000000000,
+          "read_only": true,
+          "has_feedback": false
+        },
+        {
+          "external_id": "ext:test-integration:router:0000200:pv_power",
+          "category": "energy-production-sensor",
+          "type": "power",
+          "unit": "watt",
+          "min": 0,
+          "max": 100000,
+          "read_only": true,
+          "has_feedback": false
+        },
+        {
+          "external_id": "ext:test-integration:router:0000200:pv_energy",
+          "category": "energy-production-sensor",
+          "type": "index",
+          "unit": "kilowatt-hour",
+          "min": 0,
+          "max": 1000000000,
+          "read_only": true,
+          "has_feedback": false
+        },
+        {
+          "external_id": "ext:test-integration:router:0000200:temperature_water",
+          "category": "temperature-sensor",
+          "type": "decimal",
+          "unit": "celsius",
+          "min": -50,
+          "max": 150,
+          "read_only": true,
+          "has_feedback": false
+        },
+        {
+          "external_id": "ext:test-integration:router:0000200:temperature_bathroom",
+          "category": "temperature-sensor",
+          "type": "decimal",
+          "unit": "celsius",
+          "min": -50,
+          "max": 150,
+          "read_only": true,
+          "has_feedback": false
+        },
+        {
+          "external_id": "ext:test-integration:router:0000200:temperature_ambient",
+          "category": "temperature-sensor",
+          "type": "decimal",
+          "unit": "celsius",
+          "min": -50,
+          "max": 150,
+          "read_only": true,
+          "has_feedback": false
+        },
+        {
+          "external_id": "ext:test-integration:router:0000200:rssi",
+          "category": "signal",
+          "type": "integer",
+          "unit": null,
+          "min": -120,
+          "max": 0,
+          "read_only": true,
+          "has_feedback": false
+        }
+      ]
+    },
+    "msunpv_2x2_water_heater": {
+      "external_id": "ext:test-integration:output:0000200-water_heater",
+      "should_poll": false,
+      "params": ["ROUTER_MODEL", "ROUTER_ID", "ROUTER_OUTPUT"],
+      "features": [
+        {
+          "external_id": "ext:test-integration:output:0000200-water_heater:opening",
+          "category": "switch",
+          "type": "dimmer",
+          "unit": null,
+          "min": 0,
+          "max": 100,
+          "read_only": true,
+          "has_feedback": false
+        },
+        {
+          "external_id": "ext:test-integration:output:0000200-water_heater:forced",
+          "category": "switch",
+          "type": "binary",
+          "unit": null,
+          "min": 0,
+          "max": 1,
+          "read_only": false,
+          "has_feedback": true
+        },
+        {
+          "external_id": "ext:test-integration:output:0000200-water_heater:mode",
+          "category": "text",
+          "type": "text",
+          "unit": null,
+          "min": 0,
+          "max": 0,
+          "read_only": true,
+          "has_feedback": false
+        }
+      ]
+    },
+    "msunpv_2x2_heater": {
+      "external_id": "ext:test-integration:output:0000200-heater",
+      "should_poll": false,
+      "params": ["ROUTER_MODEL", "ROUTER_ID", "ROUTER_OUTPUT"],
+      "features": [
+        {
+          "external_id": "ext:test-integration:output:0000200-heater:opening",
+          "category": "switch",
+          "type": "dimmer",
+          "unit": null,
+          "min": 0,
+          "max": 100,
+          "read_only": true,
+          "has_feedback": false
+        },
+        {
+          "external_id": "ext:test-integration:output:0000200-heater:forced",
+          "category": "switch",
+          "type": "binary",
+          "unit": null,
+          "min": 0,
+          "max": 1,
+          "read_only": false,
+          "has_feedback": true
+        },
+        {
+          "external_id": "ext:test-integration:output:0000200-heater:mode",
+          "category": "text",
+          "type": "text",
+          "unit": null,
+          "min": 0,
+          "max": 0,
+          "read_only": true,
+          "has_feedback": false
+        }
+      ]
+    },
+    "msunpv_4x4_router": {
+      "external_id": "ext:test-integration:router:0000301",
+      "should_poll": false,
+      "params": ["ROUTER_MODEL", "ROUTER_ID"],
+      "features": [
+        {
+          "external_id": "ext:test-integration:router:0000301:grid_power",
+          "category": "grid-sensor",
+          "type": "power",
+          "unit": "watt",
+          "min": -100000,
+          "max": 100000,
+          "read_only": true,
+          "has_feedback": false
+        },
+        {
+          "external_id": "ext:test-integration:router:0000301:grid_import_index",
+          "category": "grid-sensor",
+          "type": "input-index",
+          "unit": "kilowatt-hour",
+          "min": 0,
+          "max": 1000000000,
+          "read_only": true,
+          "has_feedback": false
+        },
+        {
+          "external_id": "ext:test-integration:router:0000301:grid_export_index",
+          "category": "grid-sensor",
+          "type": "output-index",
+          "unit": "kilowatt-hour",
+          "min": 0,
+          "max": 1000000000,
+          "read_only": true,
+          "has_feedback": false
+        },
+        {
+          "external_id": "ext:test-integration:router:0000301:pv_power",
+          "category": "energy-production-sensor",
+          "type": "power",
+          "unit": "watt",
+          "min": 0,
+          "max": 100000,
+          "read_only": true,
+          "has_feedback": false
+        },
+        {
+          "external_id": "ext:test-integration:router:0000301:pv_energy",
+          "category": "energy-production-sensor",
+          "type": "index",
+          "unit": "kilowatt-hour",
+          "min": 0,
+          "max": 1000000000,
+          "read_only": true,
+          "has_feedback": false
+        },
+        {
+          "external_id": "ext:test-integration:router:0000301:temperature_water",
+          "category": "temperature-sensor",
+          "type": "decimal",
+          "unit": "celsius",
+          "min": -50,
+          "max": 150,
+          "read_only": true,
+          "has_feedback": false
+        },
+        {
+          "external_id": "ext:test-integration:router:0000301:temperature_ambient",
+          "category": "temperature-sensor",
+          "type": "decimal",
+          "unit": "celsius",
+          "min": -50,
+          "max": 150,
+          "read_only": true,
+          "has_feedback": false
+        },
+        {
+          "external_id": "ext:test-integration:router:0000301:rssi",
+          "category": "signal",
+          "type": "integer",
+          "unit": null,
+          "min": -120,
+          "max": 0,
+          "read_only": true,
+          "has_feedback": false
+        }
+      ]
+    },
+    "msunpv_4x4_water_heater": {
+      "external_id": "ext:test-integration:output:0000301-water_heater",
+      "should_poll": false,
+      "params": ["ROUTER_MODEL", "ROUTER_ID", "ROUTER_OUTPUT"],
+      "features": [
+        {
+          "external_id": "ext:test-integration:output:0000301-water_heater:power",
+          "category": "energy-sensor",
+          "type": "power",
+          "unit": "watt",
+          "min": 0,
+          "max": 100000,
+          "read_only": true,
+          "has_feedback": false
+        },
+        {
+          "external_id": "ext:test-integration:output:0000301-water_heater:energy",
+          "category": "energy-sensor",
+          "type": "index",
+          "unit": "kilowatt-hour",
+          "min": 0,
+          "max": 1000000000,
+          "read_only": true,
+          "has_feedback": false
+        },
+        {
+          "external_id": "ext:test-integration:output:0000301-water_heater:forced",
+          "category": "switch",
+          "type": "binary",
+          "unit": null,
+          "min": 0,
+          "max": 1,
+          "read_only": false,
+          "has_feedback": true
+        },
+        {
+          "external_id": "ext:test-integration:output:0000301-water_heater:mode",
+          "category": "text",
+          "type": "text",
+          "unit": null,
+          "min": 0,
+          "max": 0,
+          "read_only": true,
+          "has_feedback": false
+        }
+      ]
+    },
+    "msunpv_4x4_heater": {
+      "external_id": "ext:test-integration:output:0000301-heater",
+      "should_poll": false,
+      "params": ["ROUTER_MODEL", "ROUTER_ID", "ROUTER_OUTPUT"],
+      "features": [
+        {
+          "external_id": "ext:test-integration:output:0000301-heater:power",
+          "category": "energy-sensor",
+          "type": "power",
+          "unit": "watt",
+          "min": 0,
+          "max": 100000,
+          "read_only": true,
+          "has_feedback": false
+        },
+        {
+          "external_id": "ext:test-integration:output:0000301-heater:energy",
+          "category": "energy-sensor",
+          "type": "index",
+          "unit": "kilowatt-hour",
+          "min": 0,
+          "max": 1000000000,
+          "read_only": true,
+          "has_feedback": false
+        },
+        {
+          "external_id": "ext:test-integration:output:0000301-heater:forced",
+          "category": "switch",
+          "type": "binary",
+          "unit": null,
+          "min": 0,
+          "max": 1,
+          "read_only": false,
+          "has_feedback": true
+        },
+        {
+          "external_id": "ext:test-integration:output:0000301-heater:mode",
+          "category": "text",
+          "type": "text",
+          "unit": null,
+          "min": 0,
+          "max": 0,
+          "read_only": true,
+          "has_feedback": false
+        }
+      ]
+    }
+  },
+  "manifest": {
+    "config_schema": [
+      {
+        "key": "intro",
+        "type": "section"
+      },
+      {
+        "key": "hosts",
+        "type": "string"
+      },
+      {
+        "key": "options",
+        "type": "section"
+      },
+      {
+        "key": "interval",
+        "type": "select"
+      },
+      {
+        "key": "force_minutes",
+        "type": "number"
+      },
+      {
+        "key": "language",
+        "type": "select"
+      }
+    ],
+    "actions": ["search", "diagnostic"],
+    "action_fields": {
+      "search": [],
+      "diagnostic": []
+    },
+    "widgets": [
+      {
+        "key": "overview",
+        "settings": ["router"],
+        "options": {}
+      },
+      {
+        "key": "power",
+        "settings": ["router"],
+        "options": {}
+      }
+    ],
+    "scene_triggers": [
+      {
+        "key": "router_unreachable",
+        "fields": [
+          {
+            "key": "router",
+            "options": []
+          }
+        ],
+        "variables": [
+          {
+            "key": "router",
+            "type": "string"
+          },
+          {
+            "key": "router_name",
+            "type": "string"
+          },
+          {
+            "key": "model",
+            "type": "string"
+          },
+          {
+            "key": "address",
+            "type": "string"
+          },
+          {
+            "key": "message",
+            "type": "string"
+          },
+          {
+            "key": "failures",
+            "type": "number"
+          }
+        ]
+      },
+      {
+        "key": "router_back_online",
+        "fields": [
+          {
+            "key": "router",
+            "options": []
+          }
+        ],
+        "variables": [
+          {
+            "key": "router",
+            "type": "string"
+          },
+          {
+            "key": "router_name",
+            "type": "string"
+          },
+          {
+            "key": "model",
+            "type": "string"
+          },
+          {
+            "key": "address",
+            "type": "string"
+          },
+          {
+            "key": "message",
+            "type": "string"
+          },
+          {
+            "key": "down_minutes",
+            "type": "number"
+          }
+        ]
+      },
+      {
+        "key": "router_restarted",
+        "fields": [
+          {
+            "key": "router",
+            "options": []
+          }
+        ],
+        "variables": [
+          {
+            "key": "router",
+            "type": "string"
+          },
+          {
+            "key": "router_name",
+            "type": "string"
+          },
+          {
+            "key": "model",
+            "type": "string"
+          },
+          {
+            "key": "address",
+            "type": "string"
+          },
+          {
+            "key": "message",
+            "type": "string"
+          },
+          {
+            "key": "uptime_before_hours",
+            "type": "number"
+          }
+        ]
+      },
+      {
+        "key": "forcing_ended",
+        "fields": [
+          {
+            "key": "output",
+            "options": []
+          },
+          {
+            "key": "previous_mode",
+            "options": ["on", "off"]
+          }
+        ],
+        "variables": [
+          {
+            "key": "router",
+            "type": "string"
+          },
+          {
+            "key": "router_name",
+            "type": "string"
+          },
+          {
+            "key": "output",
+            "type": "string"
+          },
+          {
+            "key": "output_name",
+            "type": "string"
+          },
+          {
+            "key": "previous_mode",
+            "type": "string"
+          },
+          {
+            "key": "message",
+            "type": "string"
+          }
+        ]
+      }
+    ],
+    "scene_actions": [
+      {
+        "key": "set_output_mode",
+        "fields": ["output", "mode", "minutes"],
+        "outputs": [
+          {
+            "key": "output_name",
+            "type": "string"
+          },
+          {
+            "key": "mode",
+            "type": "string"
+          },
+          {
+            "key": "minutes",
+            "type": "number"
+          },
+          {
+            "key": "summary",
+            "type": "string"
+          }
+        ]
+      },
+      {
+        "key": "get_today",
+        "fields": ["router"],
+        "outputs": [
+          {
+            "key": "router_name",
+            "type": "string"
+          },
+          {
+            "key": "imported_kwh",
+            "type": "number"
+          },
+          {
+            "key": "exported_kwh",
+            "type": "number"
+          },
+          {
+            "key": "routed_kwh",
+            "type": "number"
+          },
+          {
+            "key": "produced_kwh",
+            "type": "number"
+          },
+          {
+            "key": "grid_watts",
+            "type": "number"
+          },
+          {
+            "key": "summary",
+            "type": "string"
+          }
+        ]
+      }
+    ]
+  }
+}

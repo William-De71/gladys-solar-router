@@ -1,0 +1,18 @@
+Gladys Solar Router integration (gladys-solar-router)
+Copyright 2026 William Deren
+
+This product is licensed under the Apache License, Version 2.0 (see LICENSE).
+
+It reads the F1ATB and MSunPV solar routers of the user's own local network
+through the pages their own web interface uses. This integration is not
+affiliated with nor endorsed by F1ATB nor Ard-Tek; F1ATB, MSunPV and Ard-Tek
+are names of their owners.
+
+The F1ATB pages and fields (/ajax_data, /ajax_etatActions, /ajax_dataESP32,
+/ForceAction) follow the published sources of the router firmware
+(https://github.com/F1ATB/Solar-Router-F1ATB, no license declared), read for
+the facts only: no code is taken from them.
+
+The MSunPV fields (/status.xml, POST /index.xml) follow those documented by
+the Home Assistant integration https://github.com/pvergezac/MSunPVIntegration
+(MIT), read for the facts only: no code is taken from it.

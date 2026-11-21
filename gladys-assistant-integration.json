@@ -1,0 +1,1016 @@
+{
+  "manifest_version": 1,
+  "type": "device",
+  "name": "Solar Router (F1ATB, MSunPV)",
+  "description": {
+    "en": "F1ATB and MSunPV solar routers on the local network: surplus, loads, forcing.",
+    "fr": "Routeurs solaires F1ATB et MSunPV en local : surplus, charges routées, marche forcée.",
+    "de": "Solarrouter F1ATB und MSunPV im lokalen Netz: Überschuss, Verbraucher, Zwangsbetrieb.",
+    "es": "Routers solares F1ATB y MSunPV en red local: excedente, cargas, marcha forzada."
+  },
+  "version": "0.1.0",
+  "docker_image": "ghcr.io/william-de71/gladys-solar-router:0.1.0",
+  "gladys_version": ">=5.3.0",
+  "categories": ["energy"],
+  "keywords": [
+    "F1ATB",
+    "MSunPV",
+    "Ard-Tek",
+    "routeur solaire",
+    "solar router",
+    "PV router",
+    "autoconsommation",
+    "chauffe-eau",
+    "surplus solaire",
+    "Solarüberschuss"
+  ],
+  "cover_image": "https://raw.githubusercontent.com/William-De71/gladys-solar-router/main/cover.jpg",
+  "transports": ["local"],
+  "config_schema": [
+    {
+      "key": "intro",
+      "type": "section",
+      "label": {
+        "en": "Your solar router",
+        "fr": "Votre routeur solaire",
+        "de": "Dein Solarrouter",
+        "es": "Su router solar"
+      },
+      "description": {
+        "en": "The integration talks to your F1ATB or MSunPV router over the local network, through the pages of its own web interface: nothing leaves your home. Neither router announces itself on the network: type its IP address (shown on its screen or in your internet box). The model is recognised by itself. Not affiliated with F1ATB or Ard-Tek.",
+        "fr": "L’intégration dialogue avec votre routeur F1ATB ou MSunPV sur le réseau local, par les pages de sa propre interface web : rien ne sort de chez vous. Aucun des deux ne s’annonce sur le réseau : saisissez son adresse IP (affichée sur son écran ou dans votre box internet). Le modèle est reconnu tout seul. Non affiliée à F1ATB ni à Ard-Tek.",
+        "de": "Die Integration spricht mit deinem F1ATB- oder MSunPV-Router über das lokale Netzwerk, über die Seiten seiner eigenen Weboberfläche: Nichts verlässt dein Zuhause. Keiner der beiden meldet sich im Netzwerk an: Gib seine IP-Adresse ein (auf seinem Display oder in deinem Router zu sehen). Das Modell wird automatisch erkannt. Nicht mit F1ATB oder Ard-Tek verbunden.",
+        "es": "La integración se comunica con su router F1ATB o MSunPV por la red local, mediante las páginas de su propia interfaz web: nada sale de su casa. Ninguno de los dos se anuncia en la red: introduzca su dirección IP (en su pantalla o en su router de internet). El modelo se reconoce solo. No afiliada a F1ATB ni a Ard-Tek."
+      },
+      "links": [
+        {
+          "url": "https://f1atb.fr",
+          "label": {
+            "en": "F1ATB router",
+            "fr": "Routeur F1ATB",
+            "de": "F1ATB-Router",
+            "es": "Router F1ATB"
+          }
+        },
+        {
+          "url": "https://ard-tek.com",
+          "label": {
+            "en": "MSunPV (Ard-Tek)",
+            "fr": "MSunPV (Ard-Tek)",
+            "de": "MSunPV (Ard-Tek)",
+            "es": "MSunPV (Ard-Tek)"
+          }
+        }
+      ]
+    },
+    {
+      "key": "hosts",
+      "type": "string",
+      "required": true,
+      "label": {
+        "en": "Router addresses",
+        "fr": "Adresses des routeurs",
+        "de": "Router-Adressen",
+        "es": "Direcciones de los routers"
+      },
+      "description": {
+        "en": "IP addresses or names of your routers, separated by commas (a port after “:” if it is not 80).",
+        "fr": "Adresses IP ou noms de vos routeurs, séparés par des virgules (un port après « : » s’il n’est pas 80).",
+        "de": "IP-Adressen oder Namen deiner Router, durch Kommas getrennt (ein Port nach „:“, wenn es nicht 80 ist).",
+        "es": "Direcciones IP o nombres de sus routers, separados por comas (un puerto tras «:» si no es el 80)."
+      },
+      "placeholder": {
+        "en": "192.168.1.30",
+        "fr": "192.168.1.30",
+        "de": "192.168.1.30",
+        "es": "192.168.1.30"
+      }
+    },
+    {
+      "key": "options",
+      "type": "section",
+      "label": {
+        "en": "Options",
+        "fr": "Options",
+        "de": "Optionen",
+        "es": "Opciones"
+      }
+    },
+    {
+      "key": "interval",
+      "type": "select",
+      "default": "10",
+      "label": {
+        "en": "Reading",
+        "fr": "Lecture",
+        "de": "Abfrage",
+        "es": "Lectura"
+      },
+      "description": {
+        "en": "How often the routers are read.",
+        "fr": "Fréquence de lecture des routeurs.",
+        "de": "Wie oft die Router abgefragt werden.",
+        "es": "Frecuencia de lectura de los routers."
+      },
+      "options": [
+        {
+          "value": "5",
+          "label": {
+            "en": "Every 5 seconds",
+            "fr": "Toutes les 5 secondes",
+            "de": "Alle 5 Sekunden",
+            "es": "Cada 5 segundos"
+          }
+        },
+        {
+          "value": "10",
+          "label": {
+            "en": "Every 10 seconds",
+            "fr": "Toutes les 10 secondes",
+            "de": "Alle 10 Sekunden",
+            "es": "Cada 10 segundos"
+          }
+        },
+        {
+          "value": "30",
+          "label": {
+            "en": "Every 30 seconds",
+            "fr": "Toutes les 30 secondes",
+            "de": "Alle 30 Sekunden",
+            "es": "Cada 30 segundos"
+          }
+        },
+        {
+          "value": "60",
+          "label": {
+            "en": "Every minute",
+            "fr": "Toutes les minutes",
+            "de": "Jede Minute",
+            "es": "Cada minuto"
+          }
+        }
+      ]
+    },
+    {
+      "key": "force_minutes",
+      "type": "number",
+      "default": 60,
+      "min": 1,
+      "max": 1440,
+      "label": {
+        "en": "Forcing duration (F1ATB)",
+        "fr": "Durée du forçage (F1ATB)",
+        "de": "Dauer des Zwangsbetriebs (F1ATB)",
+        "es": "Duración del forzado (F1ATB)"
+      },
+      "description": {
+        "en": "Minutes an F1ATB output stays forced on with its switch or a widget button. An MSunPV output stays forced until switched back.",
+        "fr": "Minutes pendant lesquelles une sortie F1ATB reste forcée par son interrupteur ou un bouton de widget. Une sortie MSunPV reste forcée jusqu’à ce qu’on la remette en automatique.",
+        "de": "Minuten, die ein F1ATB-Ausgang über seinen Schalter oder eine Widget-Schaltfläche im Zwangsbetrieb bleibt. Ein MSunPV-Ausgang bleibt erzwungen, bis du ihn zurückschaltest.",
+        "es": "Minutos que una salida F1ATB permanece forzada con su interruptor o un botón del widget. Una salida MSunPV permanece forzada hasta que se vuelva a poner en automático."
+      }
+    },
+    {
+      "key": "language",
+      "type": "select",
+      "default": "auto",
+      "label": {
+        "en": "Language of the texts",
+        "fr": "Langue des textes",
+        "de": "Sprache der Texte",
+        "es": "Idioma de los textos"
+      },
+      "description": {
+        "en": "Feature names, scene texts and errors. Automatic: the language of the last widget shown.",
+        "fr": "Noms des fonctionnalités, textes des scènes et erreurs. Automatique : la langue du dernier widget affiché.",
+        "de": "Namen der Funktionen, Szenentexte und Fehler. Automatisch: die Sprache des zuletzt angezeigten Widgets.",
+        "es": "Nombres de las funciones, textos de escenas y errores. Automático: el idioma del último widget mostrado."
+      },
+      "options": [
+        {
+          "value": "auto",
+          "label": {
+            "en": "Automatic",
+            "fr": "Automatique",
+            "de": "Automatisch",
+            "es": "Automático"
+          }
+        },
+        {
+          "value": "en",
+          "label": {
+            "en": "English",
+            "fr": "English",
+            "de": "English",
+            "es": "English"
+          }
+        },
+        {
+          "value": "fr",
+          "label": {
+            "en": "Français",
+            "fr": "Français",
+            "de": "Français",
+            "es": "Français"
+          }
+        },
+        {
+          "value": "de",
+          "label": {
+            "en": "Deutsch",
+            "fr": "Deutsch",
+            "de": "Deutsch",
+            "es": "Deutsch"
+          }
+        },
+        {
+          "value": "es",
+          "label": {
+            "en": "Español",
+            "fr": "Español",
+            "de": "Español",
+            "es": "Español"
+          }
+        }
+      ]
+    }
+  ],
+  "actions": [
+    {
+      "key": "search",
+      "timeout_seconds": 60,
+      "label": {
+        "en": "Search and test",
+        "fr": "Rechercher et tester",
+        "de": "Suchen und testen",
+        "es": "Buscar y probar"
+      },
+      "description": {
+        "en": "Reads the routers at the addresses typed and offers their devices on the Discover screen.",
+        "fr": "Lit les routeurs aux adresses saisies et propose leurs appareils dans l’écran Découverte.",
+        "de": "Liest die Router unter den eingegebenen Adressen und bietet ihre Geräte im Bildschirm Entdecken an.",
+        "es": "Lee los routers en las direcciones introducidas y ofrece sus dispositivos en la pantalla Descubrir."
+      }
+    },
+    {
+      "key": "diagnostic",
+      "timeout_seconds": 10,
+      "label": {
+        "en": "Diagnostic",
+        "fr": "Diagnostic",
+        "de": "Diagnose",
+        "es": "Diagnóstico"
+      },
+      "description": {
+        "en": "Writes what the integration knows to its logs, for a bug report.",
+        "fr": "Écrit ce que sait l’intégration dans ses journaux, pour un signalement de bug.",
+        "de": "Schreibt, was die Integration weiß, in ihre Protokolle, für einen Fehlerbericht.",
+        "es": "Escribe lo que sabe la integración en sus registros, para un informe de error."
+      }
+    }
+  ],
+  "widgets": [
+    {
+      "key": "overview",
+      "label": {
+        "en": "Solar router",
+        "fr": "Routeur solaire",
+        "de": "Solarrouter",
+        "es": "Router solar"
+      },
+      "description": {
+        "en": "Grid exchange, routed or produced power, today’s energy, outputs and buttons to force them.",
+        "fr": "Échange réseau, puissance routée ou produite, énergie du jour, sorties et boutons de forçage.",
+        "de": "Netzaustausch, umgeleitete oder erzeugte Leistung, Energie heute, Ausgänge, Zwangsbetrieb.",
+        "es": "Intercambio con la red, potencia derivada o producida, energía del día, salidas y forzado."
+      },
+      "icon": "sun",
+      "settings": [
+        {
+          "key": "router",
+          "type": "select",
+          "source": "devices",
+          "required": false,
+          "label": {
+            "en": "Router",
+            "fr": "Routeur",
+            "de": "Router",
+            "es": "Router"
+          },
+          "description": {
+            "en": "The router (or one of its outputs). Leave empty for the first one.",
+            "fr": "Le routeur (ou l’une de ses sorties). Laissez vide pour le premier.",
+            "de": "Der Router (oder einer seiner Ausgänge). Leer lassen für den ersten.",
+            "es": "El router (o una de sus salidas). Déjelo vacío para el primero."
+          }
+        }
+      ]
+    },
+    {
+      "key": "power",
+      "label": {
+        "en": "Router power",
+        "fr": "Puissance du routeur",
+        "de": "Router-Leistung",
+        "es": "Potencia del router"
+      },
+      "description": {
+        "en": "One router: the grid exchange and the routed or produced power over the last 24 hours.",
+        "fr": "Un routeur : l’échange réseau et la puissance routée ou produite sur les dernières 24 heures.",
+        "de": "Ein Router: Netzaustausch und umgeleitete oder erzeugte Leistung der letzten 24 Stunden.",
+        "es": "Un router: el intercambio con la red y la potencia derivada o producida en las últimas 24 horas."
+      },
+      "icon": "activity",
+      "settings": [
+        {
+          "key": "router",
+          "type": "select",
+          "source": "devices",
+          "required": false,
+          "label": {
+            "en": "Router",
+            "fr": "Routeur",
+            "de": "Router",
+            "es": "Router"
+          },
+          "description": {
+            "en": "The router (or one of its outputs). Leave empty for the first one.",
+            "fr": "Le routeur (ou l’une de ses sorties). Laissez vide pour le premier.",
+            "de": "Der Router (oder einer seiner Ausgänge). Leer lassen für den ersten.",
+            "es": "El router (o una de sus salidas). Déjelo vacío para el primero."
+          }
+        }
+      ]
+    }
+  ],
+  "scene_triggers": [
+    {
+      "key": "router_unreachable",
+      "label": {
+        "en": "Solar router: not answering",
+        "fr": "Routeur solaire : ne répond plus",
+        "de": "Solarrouter: antwortet nicht",
+        "es": "Router solar: no responde"
+      },
+      "description": {
+        "en": "The router has not answered 3 readings in a row, for at least a minute (power cut, Wi-Fi lost, crash).",
+        "fr": "Le routeur n’a pas répondu à 3 lectures de suite, pendant au moins une minute (coupure, Wi-Fi perdu, plantage).",
+        "de": "Der Router hat 3 Abfragen in Folge und mindestens eine Minute lang nicht geantwortet (Stromausfall, WLAN weg, Absturz).",
+        "es": "El router no ha respondido a 3 lecturas seguidas, durante al menos un minuto (corte, Wi-Fi perdido, bloqueo)."
+      },
+      "fields": [
+        {
+          "key": "router",
+          "type": "select",
+          "source": "devices",
+          "required": false,
+          "label": {
+            "en": "Router",
+            "fr": "Routeur",
+            "de": "Router",
+            "es": "Router"
+          },
+          "description": {
+            "en": "The router device itself. Leave empty for any router.",
+            "fr": "L’appareil routeur lui-même. Laissez vide pour n’importe quel routeur.",
+            "de": "Das Router-Gerät selbst. Leer lassen für jeden Router.",
+            "es": "El propio dispositivo router. Déjelo vacío para cualquier router."
+          }
+        }
+      ],
+      "variables": [
+        {
+          "key": "router",
+          "type": "string",
+          "label": {
+            "en": "Device",
+            "fr": "Appareil",
+            "de": "Gerät",
+            "es": "Dispositivo"
+          }
+        },
+        {
+          "key": "router_name",
+          "type": "string",
+          "label": {
+            "en": "Router name",
+            "fr": "Nom du routeur",
+            "de": "Name des Routers",
+            "es": "Nombre del router"
+          }
+        },
+        {
+          "key": "model",
+          "type": "string",
+          "label": {
+            "en": "Model (f1atb, msunpv)",
+            "fr": "Modèle (f1atb, msunpv)",
+            "de": "Modell (f1atb, msunpv)",
+            "es": "Modelo (f1atb, msunpv)"
+          }
+        },
+        {
+          "key": "address",
+          "type": "string",
+          "label": {
+            "en": "Address",
+            "fr": "Adresse",
+            "de": "Adresse",
+            "es": "Dirección"
+          }
+        },
+        {
+          "key": "message",
+          "type": "string",
+          "label": {
+            "en": "Message",
+            "fr": "Message",
+            "de": "Nachricht",
+            "es": "Mensaje"
+          }
+        },
+        {
+          "key": "failures",
+          "type": "number",
+          "label": {
+            "en": "Failed readings",
+            "fr": "Lectures échouées",
+            "de": "Fehlgeschlagene Abfragen",
+            "es": "Lecturas fallidas"
+          }
+        }
+      ]
+    },
+    {
+      "key": "router_back_online",
+      "label": {
+        "en": "Solar router: answers again",
+        "fr": "Routeur solaire : répond de nouveau",
+        "de": "Solarrouter: antwortet wieder",
+        "es": "Router solar: vuelve a responder"
+      },
+      "description": {
+        "en": "The router answers again after not answering.",
+        "fr": "Le routeur répond de nouveau après une coupure.",
+        "de": "Der Router antwortet wieder, nachdem er nicht geantwortet hat.",
+        "es": "El router vuelve a responder tras no hacerlo."
+      },
+      "fields": [
+        {
+          "key": "router",
+          "type": "select",
+          "source": "devices",
+          "required": false,
+          "label": {
+            "en": "Router",
+            "fr": "Routeur",
+            "de": "Router",
+            "es": "Router"
+          },
+          "description": {
+            "en": "The router device itself. Leave empty for any router.",
+            "fr": "L’appareil routeur lui-même. Laissez vide pour n’importe quel routeur.",
+            "de": "Das Router-Gerät selbst. Leer lassen für jeden Router.",
+            "es": "El propio dispositivo router. Déjelo vacío para cualquier router."
+          }
+        }
+      ],
+      "variables": [
+        {
+          "key": "router",
+          "type": "string",
+          "label": {
+            "en": "Device",
+            "fr": "Appareil",
+            "de": "Gerät",
+            "es": "Dispositivo"
+          }
+        },
+        {
+          "key": "router_name",
+          "type": "string",
+          "label": {
+            "en": "Router name",
+            "fr": "Nom du routeur",
+            "de": "Name des Routers",
+            "es": "Nombre del router"
+          }
+        },
+        {
+          "key": "model",
+          "type": "string",
+          "label": {
+            "en": "Model (f1atb, msunpv)",
+            "fr": "Modèle (f1atb, msunpv)",
+            "de": "Modell (f1atb, msunpv)",
+            "es": "Modelo (f1atb, msunpv)"
+          }
+        },
+        {
+          "key": "address",
+          "type": "string",
+          "label": {
+            "en": "Address",
+            "fr": "Adresse",
+            "de": "Adresse",
+            "es": "Dirección"
+          }
+        },
+        {
+          "key": "message",
+          "type": "string",
+          "label": {
+            "en": "Message",
+            "fr": "Message",
+            "de": "Nachricht",
+            "es": "Mensaje"
+          }
+        },
+        {
+          "key": "down_minutes",
+          "type": "number",
+          "label": {
+            "en": "Minutes without answer",
+            "fr": "Minutes sans réponse",
+            "de": "Minuten ohne Antwort",
+            "es": "Minutos sin respuesta"
+          }
+        }
+      ]
+    },
+    {
+      "key": "router_restarted",
+      "label": {
+        "en": "Solar router: restarted",
+        "fr": "Routeur solaire : redémarré",
+        "de": "Solarrouter: neu gestartet",
+        "es": "Router solar: reiniciado"
+      },
+      "description": {
+        "en": "An F1ATB router restarted (power cut, update, crash): its uptime went back.",
+        "fr": "Un routeur F1ATB a redémarré (coupure, mise à jour, plantage) : son temps de fonctionnement est reparti de zéro.",
+        "de": "Ein F1ATB-Router wurde neu gestartet (Stromausfall, Update, Absturz): Seine Laufzeit begann von vorn.",
+        "es": "Un router F1ATB se ha reiniciado (corte, actualización, bloqueo): su tiempo de funcionamiento volvió a cero."
+      },
+      "fields": [
+        {
+          "key": "router",
+          "type": "select",
+          "source": "devices",
+          "required": false,
+          "label": {
+            "en": "Router",
+            "fr": "Routeur",
+            "de": "Router",
+            "es": "Router"
+          },
+          "description": {
+            "en": "The router device itself. Leave empty for any router.",
+            "fr": "L’appareil routeur lui-même. Laissez vide pour n’importe quel routeur.",
+            "de": "Das Router-Gerät selbst. Leer lassen für jeden Router.",
+            "es": "El propio dispositivo router. Déjelo vacío para cualquier router."
+          }
+        }
+      ],
+      "variables": [
+        {
+          "key": "router",
+          "type": "string",
+          "label": {
+            "en": "Device",
+            "fr": "Appareil",
+            "de": "Gerät",
+            "es": "Dispositivo"
+          }
+        },
+        {
+          "key": "router_name",
+          "type": "string",
+          "label": {
+            "en": "Router name",
+            "fr": "Nom du routeur",
+            "de": "Name des Routers",
+            "es": "Nombre del router"
+          }
+        },
+        {
+          "key": "model",
+          "type": "string",
+          "label": {
+            "en": "Model (f1atb, msunpv)",
+            "fr": "Modèle (f1atb, msunpv)",
+            "de": "Modell (f1atb, msunpv)",
+            "es": "Modelo (f1atb, msunpv)"
+          }
+        },
+        {
+          "key": "address",
+          "type": "string",
+          "label": {
+            "en": "Address",
+            "fr": "Adresse",
+            "de": "Adresse",
+            "es": "Dirección"
+          }
+        },
+        {
+          "key": "message",
+          "type": "string",
+          "label": {
+            "en": "Message",
+            "fr": "Message",
+            "de": "Nachricht",
+            "es": "Mensaje"
+          }
+        },
+        {
+          "key": "uptime_before_hours",
+          "type": "number",
+          "label": {
+            "en": "Uptime before (h)",
+            "fr": "Fonctionnement avant (h)",
+            "de": "Laufzeit davor (h)",
+            "es": "Funcionamiento antes (h)"
+          }
+        }
+      ]
+    },
+    {
+      "key": "forcing_ended",
+      "label": {
+        "en": "Solar router: forcing ended",
+        "fr": "Routeur solaire : fin du forçage",
+        "de": "Solarrouter: Zwangsbetrieb beendet",
+        "es": "Router solar: fin del forzado"
+      },
+      "description": {
+        "en": "An F1ATB output forced on or off went back to automatic by itself, at the end of its duration.",
+        "fr": "Une sortie F1ATB forcée en marche ou à l’arrêt est revenue d’elle-même en automatique, à la fin de sa durée.",
+        "de": "Ein F1ATB-Ausgang im Zwangsbetrieb oder zwangsweise aus ist am Ende seiner Dauer von selbst auf Automatik zurückgekehrt.",
+        "es": "Una salida F1ATB forzada en marcha o parada ha vuelto sola a automático al terminar su duración."
+      },
+      "fields": [
+        {
+          "key": "output",
+          "type": "select",
+          "source": "devices",
+          "required": false,
+          "label": {
+            "en": "Output",
+            "fr": "Sortie",
+            "de": "Ausgang",
+            "es": "Salida"
+          },
+          "description": {
+            "en": "An output of a router. Leave empty for any output.",
+            "fr": "Une sortie d’un routeur. Laissez vide pour n’importe quelle sortie.",
+            "de": "Ein Ausgang eines Routers. Leer lassen für jeden Ausgang.",
+            "es": "Una salida de un router. Déjela vacía para cualquier salida."
+          }
+        },
+        {
+          "key": "previous_mode",
+          "type": "select",
+          "required": false,
+          "label": {
+            "en": "Forcing",
+            "fr": "Forçage",
+            "de": "Zwangsbetrieb",
+            "es": "Forzado"
+          },
+          "options": [
+            {
+              "value": "on",
+              "label": {
+                "en": "Forced on",
+                "fr": "Marche forcée",
+                "de": "Zwangsbetrieb",
+                "es": "Marcha forzada"
+              }
+            },
+            {
+              "value": "off",
+              "label": {
+                "en": "Forced off",
+                "fr": "Arrêt forcé",
+                "de": "Zwangsabschaltung",
+                "es": "Parada forzada"
+              }
+            }
+          ]
+        }
+      ],
+      "variables": [
+        {
+          "key": "router",
+          "type": "string",
+          "label": {
+            "en": "Device",
+            "fr": "Appareil",
+            "de": "Gerät",
+            "es": "Dispositivo"
+          }
+        },
+        {
+          "key": "router_name",
+          "type": "string",
+          "label": {
+            "en": "Router name",
+            "fr": "Nom du routeur",
+            "de": "Name des Routers",
+            "es": "Nombre del router"
+          }
+        },
+        {
+          "key": "output",
+          "type": "string",
+          "label": {
+            "en": "Output device",
+            "fr": "Appareil de la sortie",
+            "de": "Gerät des Ausgangs",
+            "es": "Dispositivo de la salida"
+          }
+        },
+        {
+          "key": "output_name",
+          "type": "string",
+          "label": {
+            "en": "Output name",
+            "fr": "Nom de la sortie",
+            "de": "Name des Ausgangs",
+            "es": "Nombre de la salida"
+          }
+        },
+        {
+          "key": "previous_mode",
+          "type": "string",
+          "label": {
+            "en": "Forcing that ended (on, off)",
+            "fr": "Forçage terminé (on, off)",
+            "de": "Beendeter Zwangsbetrieb (on, off)",
+            "es": "Forzado terminado (on, off)"
+          }
+        },
+        {
+          "key": "message",
+          "type": "string",
+          "label": {
+            "en": "Message",
+            "fr": "Message",
+            "de": "Nachricht",
+            "es": "Mensaje"
+          }
+        }
+      ]
+    }
+  ],
+  "scene_actions": [
+    {
+      "key": "set_output_mode",
+      "timeout_seconds": 30,
+      "label": {
+        "en": "Solar router: set an output",
+        "fr": "Routeur solaire : piloter une sortie",
+        "de": "Solarrouter: Ausgang steuern",
+        "es": "Router solar: controlar una salida"
+      },
+      "description": {
+        "en": "Forces an output on or off, or gives it back to the router (automatic). An F1ATB counts the minutes down by itself; an MSunPV stays in the mode until changed.",
+        "fr": "Force une sortie en marche ou à l’arrêt, ou la rend au routeur (automatique). Un F1ATB décompte lui-même les minutes ; un MSunPV reste dans le mode jusqu’au prochain changement.",
+        "de": "Schaltet einen Ausgang zwangsweise ein oder aus oder gibt ihn an den Router zurück (Automatik). Ein F1ATB zählt die Minuten selbst herunter; ein MSunPV bleibt bis zur nächsten Änderung im Modus.",
+        "es": "Fuerza una salida en marcha o parada, o la devuelve al router (automático). Un F1ATB descuenta solo los minutos; un MSunPV permanece en el modo hasta el siguiente cambio."
+      },
+      "fields": [
+        {
+          "key": "output",
+          "type": "select",
+          "source": "devices",
+          "required": true,
+          "label": {
+            "en": "Output",
+            "fr": "Sortie",
+            "de": "Ausgang",
+            "es": "Salida"
+          },
+          "description": {
+            "en": "An output of a router (a load, not the router itself).",
+            "fr": "Une sortie d’un routeur (une charge, pas le routeur lui-même).",
+            "de": "Ein Ausgang eines Routers (ein Verbraucher, nicht der Router selbst).",
+            "es": "Una salida de un router (una carga, no el propio router)."
+          }
+        },
+        {
+          "key": "mode",
+          "type": "select",
+          "required": true,
+          "default": "on",
+          "label": {
+            "en": "Mode",
+            "fr": "Mode",
+            "de": "Modus",
+            "es": "Modo"
+          },
+          "options": [
+            {
+              "value": "on",
+              "label": {
+                "en": "Forced on",
+                "fr": "Marche forcée",
+                "de": "Zwangsbetrieb",
+                "es": "Marcha forzada"
+              }
+            },
+            {
+              "value": "off",
+              "label": {
+                "en": "Off (forced off on an F1ATB)",
+                "fr": "Arrêt (arrêt forcé sur un F1ATB)",
+                "de": "Aus (Zwangsabschaltung beim F1ATB)",
+                "es": "Parada (parada forzada en un F1ATB)"
+              }
+            },
+            {
+              "value": "auto",
+              "label": {
+                "en": "Automatic (the router decides)",
+                "fr": "Automatique (le routeur décide)",
+                "de": "Automatik (der Router entscheidet)",
+                "es": "Automático (el router decide)"
+              }
+            }
+          ]
+        },
+        {
+          "key": "minutes",
+          "type": "number",
+          "required": false,
+          "default": 60,
+          "min": 1,
+          "max": 1440,
+          "label": {
+            "en": "Duration in minutes (F1ATB)",
+            "fr": "Durée en minutes (F1ATB)",
+            "de": "Dauer in Minuten (F1ATB)",
+            "es": "Duración en minutos (F1ATB)"
+          },
+          "description": {
+            "en": "How long an F1ATB output stays forced. Ignored by an MSunPV.",
+            "fr": "Durée du forçage d’une sortie F1ATB. Ignorée par un MSunPV.",
+            "de": "Wie lange ein F1ATB-Ausgang erzwungen bleibt. Vom MSunPV ignoriert.",
+            "es": "Cuánto tiempo permanece forzada una salida F1ATB. Un MSunPV la ignora."
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "key": "output_name",
+          "type": "string",
+          "label": {
+            "en": "Output name",
+            "fr": "Nom de la sortie",
+            "de": "Name des Ausgangs",
+            "es": "Nombre de la salida"
+          }
+        },
+        {
+          "key": "mode",
+          "type": "string",
+          "label": {
+            "en": "Mode set (on, off, auto)",
+            "fr": "Mode appliqué (on, off, auto)",
+            "de": "Gesetzter Modus (on, off, auto)",
+            "es": "Modo aplicado (on, off, auto)"
+          }
+        },
+        {
+          "key": "minutes",
+          "type": "number",
+          "label": {
+            "en": "Forcing minutes",
+            "fr": "Minutes de forçage",
+            "de": "Minuten Zwangsbetrieb",
+            "es": "Minutos de forzado"
+          }
+        },
+        {
+          "key": "summary",
+          "type": "string",
+          "label": {
+            "en": "Summary",
+            "fr": "Résumé",
+            "de": "Zusammenfassung",
+            "es": "Resumen"
+          }
+        }
+      ]
+    },
+    {
+      "key": "get_today",
+      "timeout_seconds": 10,
+      "label": {
+        "en": "Solar router: today’s energy",
+        "fr": "Routeur solaire : énergie du jour",
+        "de": "Solarrouter: Energie heute",
+        "es": "Router solar: energía del día"
+      },
+      "description": {
+        "en": "Today’s energy of a router (drawn, exported, routed, produced, as the router counts it) and its grid exchange now: for a message, an evening report.",
+        "fr": "L’énergie du jour d’un routeur (soutirée, injectée, routée, produite, telle qu’il la compte) et son échange réseau actuel : pour un message, un bilan du soir.",
+        "de": "Die heutige Energie eines Routers (bezogen, eingespeist, umgeleitet, erzeugt, wie er sie zählt) und sein aktueller Netzaustausch: für eine Nachricht, eine Abendbilanz.",
+        "es": "La energía del día de un router (consumida, vertida, derivada, producida, tal como la cuenta) y su intercambio actual con la red: para un mensaje, un balance de la tarde."
+      },
+      "fields": [
+        {
+          "key": "router",
+          "type": "select",
+          "source": "devices",
+          "required": false,
+          "label": {
+            "en": "Router",
+            "fr": "Routeur",
+            "de": "Router",
+            "es": "Router"
+          },
+          "description": {
+            "en": "The router (or one of its outputs). Leave empty for the first one.",
+            "fr": "Le routeur (ou l’une de ses sorties). Laissez vide pour le premier.",
+            "de": "Der Router (oder einer seiner Ausgänge). Leer lassen für den ersten.",
+            "es": "El router (o una de sus salidas). Déjelo vacío para el primero."
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "key": "router_name",
+          "type": "string",
+          "label": {
+            "en": "Router name",
+            "fr": "Nom du routeur",
+            "de": "Name des Routers",
+            "es": "Nombre del router"
+          }
+        },
+        {
+          "key": "imported_kwh",
+          "type": "number",
+          "label": {
+            "en": "Drawn today (kWh)",
+            "fr": "Soutiré ce jour (kWh)",
+            "de": "Heute bezogen (kWh)",
+            "es": "Consumido hoy (kWh)"
+          }
+        },
+        {
+          "key": "exported_kwh",
+          "type": "number",
+          "label": {
+            "en": "Exported today (kWh)",
+            "fr": "Injecté ce jour (kWh)",
+            "de": "Heute eingespeist (kWh)",
+            "es": "Vertido hoy (kWh)"
+          }
+        },
+        {
+          "key": "routed_kwh",
+          "type": "number",
+          "label": {
+            "en": "Routed today (kWh)",
+            "fr": "Routé ce jour (kWh)",
+            "de": "Heute umgeleitet (kWh)",
+            "es": "Derivado hoy (kWh)"
+          }
+        },
+        {
+          "key": "produced_kwh",
+          "type": "number",
+          "label": {
+            "en": "Produced today (kWh)",
+            "fr": "Produit ce jour (kWh)",
+            "de": "Heute erzeugt (kWh)",
+            "es": "Producido hoy (kWh)"
+          }
+        },
+        {
+          "key": "grid_watts",
+          "type": "number",
+          "label": {
+            "en": "Grid exchange now (W, export < 0)",
+            "fr": "Échange réseau actuel (W, injection < 0)",
+            "de": "Aktueller Netzaustausch (W, Einspeisung < 0)",
+            "es": "Intercambio actual con la red (W, vertido < 0)"
+          }
+        },
+        {
+          "key": "summary",
+          "type": "string",
+          "label": {
+            "en": "Summary",
+            "fr": "Résumé",
+            "de": "Zusammenfassung",
+            "es": "Resumen"
+          }
+        }
+      ]
+    }
+  ]
+}
